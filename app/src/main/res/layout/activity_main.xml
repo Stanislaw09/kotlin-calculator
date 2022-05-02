@@ -20,10 +20,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:lines="1"
-            android:text="hello1"
+            android:text=""
             android:padding="5sp"
-            android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textColor="@color/grey"
+            android:textSize="18sp"
             app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -34,10 +34,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:lines="1"
-            android:text="hello2"
+            android:text=""
             android:padding="5sp"
-            android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textColor="@color/grey"
+            android:textSize="18sp"
             app:layout_constraintHorizontal_bias="0.85"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -48,10 +48,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:lines="1"
-            android:text="hello3"
+            android:text=""
             android:padding="5sp"
-            android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textColor="@color/grey"
+            android:textSize="18sp"
             app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -62,8 +62,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:lines="1"
-            android:padding="10sp"
-            android:text="hello4"
+            android:padding="12sp"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="24sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -76,18 +76,23 @@
         style="@style/buttonRow">
         <Button
             style="@style/buttonOperator"
+            android:onClick="dropAction"
             android:text="DROP"/>
         <Button
             style="@style/buttonOperator"
+            android:onClick="swapAction"
             android:text="SWAP"/>
         <Button
             style="@style/buttonOperator"
+            android:onClick="undoAction"
             android:text="Undo?"/>
         <Button
             style="@style/buttonOperator"
+            android:onClick="clearAction"
             android:text="AC"/>
         <Button
             style="@style/buttonOperator"
+            android:onClick="delAction"
             android:text="←"/>
     </LinearLayout>
 
@@ -123,7 +128,7 @@
             android:text="6"/>
         <Button
             style="@style/buttonOperator"
-            android:text="X"/>
+            android:text="x"/>
         <Button
             style="@style/buttonOperator"
             android:text="/"/>
@@ -158,9 +163,11 @@
             android:text="0"/>
         <Button
             style="@style/buttonOperator"
+            android:onClick="changeSign"
             android:text="+/-"/>
         <Button
             style="@style/buttonOperator"
+            android:onClick="enterAction"
             android:text="Enter"/>
     </LinearLayout>
 </LinearLayout>

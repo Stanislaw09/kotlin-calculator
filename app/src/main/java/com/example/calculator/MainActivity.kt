@@ -1,9 +1,13 @@
 package com.example.calculator
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.calculator.databinding.ActivityMainBinding
 import java.lang.Math.pow
 import java.util.*
@@ -18,6 +22,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId==R.id.actionSettings){
+            val intent= Intent(this, Settings::class.java)
+            startActivity(intent)
+        }
+
+        return true
     }
 
     fun numberAction(view: View){
@@ -171,6 +189,9 @@ class MainActivity : AppCompatActivity() {
 
             println(stack)
             binding.stack4.text=""
+            updateStacks()
+        } else {
+            stack.push(stack.first)
             updateStacks()
         }
     }

@@ -1,9 +1,11 @@
 package com.example.calculator
 
 import android.annotation.SuppressLint
-import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.view.View
+import android.widget.EditText
 import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -42,6 +44,14 @@ class Settings : AppCompatActivity() {
 
             }
         }
+    }
 
+    fun sendPrecision(view: View) {
+        val precision=findViewById<EditText>(R.id.precision).text.toString()
+        println("current precision  " + precision)
+
+        var intent = Intent(this@Settings, MainActivity::class.java)
+        intent.putExtra("precision", precision)
+        startActivity(intent)
     }
 }

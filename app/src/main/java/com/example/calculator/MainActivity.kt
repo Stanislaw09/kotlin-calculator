@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.example.calculator.databinding.ActivityMainBinding
 import java.lang.Math.pow
 import java.util.*
+import kotlin.math.round
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,10 +19,17 @@ class MainActivity : AppCompatActivity() {
     private var stack = ArrayDeque<Double>()
     private var moveUp = false
 
+    private var precision=2.0;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var p  =  intent.getStringExtra("precision");
+        if (p != null) {
+            precision=p.toDouble()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -61,6 +69,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    fun customRound(num: Double): Double {
+        return (round(num*pow(10.0, precision.toDouble())) / pow(10.0, precision.toDouble()))
+    }
+
 
     fun operatorAction(view: View){
         if(view is Button){
@@ -121,16 +134,16 @@ class MainActivity : AppCompatActivity() {
         binding.stack1.text=""
 
         if(!stack.isEmpty()){
-            val s4=if(full) stack.pop() else 0
+            val s4=if(full) customRound(stack.pop())  else 0
 
             if(!stack.isEmpty()){
-                val s3=stack.pop()
+                val s3=customRound(stack.pop())
 
                 if(!stack.isEmpty()){
-                    val s2=stack.pop()
+                    val s2=customRound(stack.pop())
 
                     if(!stack.isEmpty()){
-                        val s1=stack.pop()
+                        val s1=customRound(stack.pop())
 
                         binding.stack1.text=s1.toString()
                         stack.push(s1)

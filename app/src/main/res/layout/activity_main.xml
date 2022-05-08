@@ -90,10 +90,6 @@
             android:text="SWAP"/>
         <Button
             style="@style/buttonOperator"
-            android:onClick="undoAction"
-            android:text="Undo?"/>
-        <Button
-            style="@style/buttonOperator"
             android:onClick="clearAction"
             android:text="AC"/>
         <Button
